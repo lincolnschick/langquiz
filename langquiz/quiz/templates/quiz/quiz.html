@@ -9,13 +9,14 @@
   <title>LangQuiz</title>
 </head>
 <header>
-  <h1 style="text-align: center; font-size: 8vh; padding: 2vh">LangQuiz</h1>
+  <h1>LangQuiz</h1>
 </header>
 <body>
   <div style="text-align: center; align-items: center; justify-content: center; display: flex;">
-    <div style="width: 50vw;">
-      <h1>What Language is This?</h1>
-      <h2>Streak: 0</h2>
+    <div style="width: 60vw;">
+      <h2>What Language is This?</h2>
+      <h3 style="padding-bottom: 4vh;">Streak: 0</h3>
+      <h4 style="text-align: left;">Question 1:</h4>
       <p style="font-size: 3vh; text-align: left;">{{ language.1 }}</p>
       <form action="" method="POST">
         {% for choice in choices %}
