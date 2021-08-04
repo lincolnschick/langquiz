@@ -3,17 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="shortcut icon" href="../../../static/favicon.ico" type="favicon/icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../../../static/styles.css">
   <title>LangQuiz</title>
 </head>
+<header>
+  <h1 style="text-align: center; font-size: 8vh; padding: 2vh">LangQuiz</h1>
+</header>
 <body>
   <div style="text-align: center; align-items: center; justify-content: center; display: flex;">
     <div style="width: 50vw;">
-      <h1 style="font-size: 8vh;">LangQuiz</h1>
-      {% load static %}
-      <img src="{% static 'World-Flags-Globe.png' %}" width="300vh" height="300vh">
-      <p style="font-style: italic;">LangQuiz tests your ability to identify a language based on its written form.</p>
-      <button type="button" class="btn btn-primary btn-lg">Start Quiz</button>
+      <h1>What Language is This?</h1>
+      <h2>Streak: 0</h2>
+      <p style="font-size: 3vh; text-align: left;">{{ language.1 }}</p>
+      <form action="" method="POST">
+        {% for choice in choices %}
+          <button class="btn btn-secondary btn-lg">{{ choice }}</button>
+        {% endfor %}
+      </form>
     </div>
   </div>
 </body>
