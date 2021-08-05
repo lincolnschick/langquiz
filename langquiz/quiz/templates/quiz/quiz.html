@@ -15,12 +15,12 @@
   <div style="text-align: center; align-items: center; justify-content: center; display: flex;">
     <div style="width: 60vw;">
       <h2>What Language is This?</h2>
-      <h3 style="padding-bottom: 4vh;">Streak: 0</h3>
-      <h4 style="text-align: left;">Question 1:</h4>
+      <h4 style="text-align: left;">Question {{ question }}:</h4>
       <p style="font-size: 3vh; text-align: left;">{{ language.1 }}</p>
-      <form action="" method="POST">
+      <form method="POST">
         {% for choice in choices %}
-          <button class="btn btn-secondary btn-lg">{{ choice }}</button>
+        {% csrf_token %}
+          <button class="btn btn-secondary btn-lg" name="selection" value="{{ choice }}">{{ choice }}</button>
         {% endfor %}
       </form>
     </div>

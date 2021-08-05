@@ -7,10 +7,29 @@ def index(request):
     return render(request, "quiz/index.html")
 
 def quiz(request):
-    context = grab_language_data()
-    return render(request, "quiz/quiz.html", context)
+    if request.method == "GET":
+        context = grab_language_data(request)
+        return render(request, "quiz/quiz.html", context)
+    else:
+        request.session["selection"] = request.POST.get("selection")
+        context = {
+        "language": request.session["language"],
+        "choices": request.session["choices"],
+        "selection": request.session["selection"],
+        "streak": request.session["streak"],
+        "question": request.session["question"]
+        }
+    return render(request, "quiz/quizanswer.html", context)
 
-def grab_language_data():
+
+def grab_language_data(request):
+    request.session.clear_expired()
+
+    # Save if previous guess was correct
+    increment = False
+    if "selection" in request.session and request.session["selection"] == request.session["language"][0]:
+        increment = True
+    
     context = {}
     # Select random language
     lang = randrange(len(language_samples))
@@ -23,11 +42,22 @@ def grab_language_data():
     context["choices"] = []
     while len(context["choices"]) < 3:
         choice = randrange(len(language_samples))
-        if choice != lang:
+        if choice != lang and choice not in context:
+            print(choice); print(lang)
             context["choices"].append(language_samples[choice][0])
-
+    
+    request.session["language"] = context["language"]
+    
     # Randomly insert correct answer
     random = randrange(4)
     context["choices"].insert(random, language_samples[lang][0])
-
+    request.session["choices"] = context["choices"]
+    if increment:
+        request.session["question"] += 1
+        context["question"] = request.session["question"]
+        request.session["streak"] += 1
+        context["streak"] = request.session["streak"]
+    else:
+        request.session["streak"] = context["streak"] = 0
+        request.session["question"] = context["question"] = 1
     return context
