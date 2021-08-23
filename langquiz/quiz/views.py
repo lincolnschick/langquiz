@@ -42,7 +42,7 @@ def grab_language_data(request):
     context["choices"] = []
     while len(context["choices"]) < 3:
         choice = randrange(len(language_samples))
-        if choice != lang and choice not in context:
+        if choice != lang and language_samples[choice][0] not in context["choices"]:
             context["choices"].append(language_samples[choice][0])
     
     request.session["language"] = context["language"]
