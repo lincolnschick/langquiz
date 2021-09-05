@@ -5,7 +5,7 @@
     <div style="width: 60vw;">
       <h2>What Language is This?</h2>
       <h4 style="text-align: left;">Question {{ question }}:</h4>
-      <p style="font-size: 3vh; text-align: left;">{{ language.1 }}</p>
+      <p style="font-size: 20px; text-align: left;">{{ language.1 }}</p>
       {% csrf_token %}
       <form method="POST">
         {% for choice in choices %}
