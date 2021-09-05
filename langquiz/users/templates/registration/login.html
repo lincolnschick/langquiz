@@ -6,7 +6,7 @@
 <form method="POST" class="form-group">
     {% csrf_token %}
     {{form|crispy}}
-    <p>Don't have an account? Create one <a href="/register">here</a></p>
+    <div>Don't have an account? Create one <a href="/register">here</a></div>
     <button type="submit" class="btn btn-primary">Login</button>
 </form>
 {% endblock %}
