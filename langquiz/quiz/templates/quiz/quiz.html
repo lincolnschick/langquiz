@@ -1,18 +1,13 @@
 {% extends "quiz/quiz_base.html" %}
 
 {% block content %}
-  <div style="text-align: center; align-items: center; justify-content: center; display: flex;">
-    <div style="width: 60vw;">
-      <h2>What Language is This?</h2>
-      <h4 style="text-align: left;">Question {{ question }}:</h4>
-      <p style="font-size: 20px; text-align: left;">{{ language.1 }}</p>
-      <form method="POST">
-        {% for choice in choices %}
-        {% csrf_token %}
-          <button class="btn btn-secondary btn-lg" name="selection" value="{{ choice }}">{{ choice }}</button>
-        {% endfor %}
-      </form>
-    </div>
-  </div>
-</body>
+  <h2>What Language is This?</h2>
+  <h4 style="text-align: left;">Question {{ question }}:</h4>
+  <p style="font-size: 20px; text-align: left;">{{ language.1 }}</p>
+  <form method="POST">
+    {% for choice in choices %}
+    {% csrf_token %}
+      <button class="btn btn-secondary btn-lg" name="selection" value="{{ choice }}">{{ choice }}</button>
+    {% endfor %}
+  </form>
 {% endblock %}

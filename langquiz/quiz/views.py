@@ -19,7 +19,7 @@ def quiz(request):
         "streak": request.session["streak"],
         "question": request.session["question"]
         }
-    return render(request, "quiz/quizanswer.html", context)
+    return render(request, "quiz/quiz_answer.html", context)
 
 
 def grab_language_data(request):

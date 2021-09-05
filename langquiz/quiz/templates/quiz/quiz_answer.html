@@ -1,0 +1,27 @@
+{% extends "quiz/quiz_base.html" %}
+
+{% block content %}
+  <h2>What Language is This?</h2>
+  <h4 style="text-align: left;">Question {{ question }}:</h4>
+  <p style="font-size: 20px; text-align: left;">{{ language.1 }}</p>
+  {% csrf_token %}
+  <form method="POST">
+    {% for choice in choices %}
+        {% if choice == language.0 %}
+            <button class="btn btn-success btn-lg" name="selection" value="{{ choice }}" disabled>{{ choice }}</button>
+        {% elif choice == selection %}
+            <button class="btn btn-danger btn-lg" name="selection" value="{{ choice }}" disabled>{{ choice }}</button>
+        {% else %}
+            <button class="btn btn-secondary btn-lg" name="selection" value="{{ choice }}" disabled>{{ choice }}</button>
+        {% endif %}
+    {% endfor %}
+    <p></p>
+  </form>
+    {% if selection == language.0 %}
+    <p><h4>Correct!</h4></p>
+      <button type="button" class="btn btn-primary btn-lg" onclick="location.href='quiz'" name="continue" value="next question">Next Question</button>
+    {% else %}
+      <p><h4>Your streak was {{ streak }}</h4></p>
+      <button type="button" class="btn btn-primary btn-lg" onclick="location.href='quiz'"name="continue" value="restart">Restart</button>
+    {% endif %}
+{% endblock %}

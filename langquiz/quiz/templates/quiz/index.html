@@ -2,12 +2,8 @@
 
 {% block content %}
 {% load static %}
-<div style="text-align: center; align-items: center; justify-content: center; display: flex;">
-  <div style="width: 60vw;">
-    <h1>LangQuiz</h1>
-    <img src="{% static 'World-Flags-Globe.png' %}" width="400vh" height="400vh">
-    <p style="font-style: italic;">LangQuiz tests your ability to identify a language based on its written form.</p>
-    <p><button type="button" class="btn btn-primary btn-lg" onclick="location.href='quiz'">Start Quiz</button></p>
-  </div>
-</div>
+  <h1>Start Quiz</h1>
+  <img src="{% static 'World-Flags-Globe.png' %}" width="400vh" height="400vh">
+  <p style="font-style: italic;">LangQuiz tests your ability to identify a language based on its written form.</p>
+  <p><button type="button" class="btn btn-primary btn-lg" onclick="location.href='quiz'">Begin</button></p>
 {% endblock %}
