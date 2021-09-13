@@ -1,6 +1,6 @@
 # LangQuiz
 
-LangQuiz is a website created to practice identifying languages based on their written form. It was designed with the game GeoGuessr in mind, and thus contains a large number of European languages. It is currently functional (see below); however, more features will be added before it is deployed (difficulty levels, leaderboards, etc.).
+LangQuiz is a website created to practice identifying languages based on their written form. It was designed with the game GeoGuessr in mind, and thus contains a large number of European languages. The complete quiz, user authentication, login, and sign up functionality is working (see below); however, more features will be added before it is deployed (difficulty levels, finishing leaderboards, etc.).
 
 ## Screenshots
 
