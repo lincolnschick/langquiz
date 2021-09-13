@@ -21,6 +21,8 @@ def quiz(request):
         }
     return render(request, "quiz/quiz_answer.html", context)
 
+def leaderboard(request):
+    return render(request, "quiz/leaderboard.html")
 
 def grab_language_data(request):
     request.session.clear_expired()

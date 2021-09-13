@@ -1,0 +1,32 @@
+{% extends "quiz/base.html" %}
+
+{% block structure %}
+<body>
+    <p></p>
+    <div style="text-align: center; align-items: center; justify-content: center; display: flex;">
+        <div style="width: 60vw;">
+            <h2>Leaderboard</h2>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">High Scores</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in "0123456789"|make_list %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>Score</td>
+                        <td>Name</td>
+                        <td>9/5/2021</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </body>
+{% endblock %}
