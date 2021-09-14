@@ -19,6 +19,9 @@ LangQuiz is a website created to practice identifying languages based on their w
 ### Sign Up
 <img width="1284" alt="Screen Shot 2021-09-05 at 8 54 59 AM" src="https://user-images.githubusercontent.com/68517913/132129592-05764872-60ef-4184-975b-223896e7665d.png">
 
+### Leaderboard
+<img width="1410" alt="Screen Shot 2021-09-13 at 11 13 41 PM" src="https://user-images.githubusercontent.com/68517913/133194451-4a7d1e3a-4293-4c66-bbbc-4be46cdc0939.png">
+
 ## Built With
 
 * Django
