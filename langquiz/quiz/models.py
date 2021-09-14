@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class Leaderboard(models.Model):
+    score = models.IntegerField(default=0)
+    username = models.TextField(default="Anonymous")
+    date = models.DateField()

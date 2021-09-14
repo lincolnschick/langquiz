@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .languagedata import language_samples
 from random import randrange
-
+from .models import Leaderboard
+import datetime
 
 def index(request):
     return render(request, "quiz/index.html")
@@ -19,10 +20,19 @@ def quiz(request):
         "streak": request.session["streak"],
         "question": request.session["question"]
         }
+        if request.session["selection"] != request.session["language"][0]:
+            update_database(request)
+        
+        
     return render(request, "quiz/quiz_answer.html", context)
 
 def leaderboard(request):
-    return render(request, "quiz/leaderboard.html")
+    data = Leaderboard.objects.all().order_by("-score")
+    context = {
+        "leaderboard": data,
+        "numbers": [num for num in range(1, data.count() + 1)]
+    }
+    return render(request, "quiz/leaderboard.html", context)
 
 def grab_language_data(request):
     request.session.clear_expired()
@@ -62,3 +72,19 @@ def grab_language_data(request):
         request.session["streak"] = context["streak"] = 0
         request.session["question"] = context["question"] = 1
     return context
+
+
+def update_database(request):
+    curr_score = request.session["streak"]
+    add_new = False
+    if Leaderboard.objects.all().count() < 10:
+        add_new = True
+    else:
+        lowest_score_obj = Leaderboard.objects.order_by("score").first()
+        if curr_score > lowest_score_obj.score:
+            lowest_score_obj.delete()
+            add_new = True
+    if add_new:
+        username = "Anonymous" if not request.user.is_authenticated else f"{request.user.username}"
+        l = Leaderboard(username=username, score=curr_score, date=datetime.date.today())
+        l.save()

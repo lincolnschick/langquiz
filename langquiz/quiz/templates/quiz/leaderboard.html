@@ -16,12 +16,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i in "0123456789"|make_list %}
+                    {% for score in leaderboard %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td>Score</td>
-                        <td>Name</td>
-                        <td>9/5/2021</td>
+                        <td>{{ score.score }}</td>
+                        <td>{{ score.username }}</td>
+                        <td>{{ score.date }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
